@@ -143,7 +143,7 @@ completely superseded by the powerful [rewrite] tactics, which we will
 see in %Section~\ref{sec:rewriting}% of this chapter. Alas, this
 special treatment also leads to a non-standard behaviour of
 case-analysis on equality. This is why, for didactical purposes, we
-will have to stick with or own home-brewed definition until the end of
+will have to stick with our own home-brewed definition until the end of
 this section.
 
 Let us now prove some interesting properties of the freshly-defined
@@ -206,7 +206,7 @@ Another important application of the equality predicate family and
 similar ones %\index{discrimination}% are _proofs by discrimination_,
 in which the contradiction is reached (i.e., the falsehood is derived)
 out of the fact that two clearly non-equal elements are assumed to be
-equal. The next lemma demonstrates the essens of the proof by
+equal. The next lemma demonstrates the essence of the proof by
 discrimination using the [my_eq] predicate.
 
 *)
@@ -259,7 +259,7 @@ pose D x := if x is 2 then False else True.
    False
 ]]
 
-Now, proving [D 1] is [True] can be accomplished by simple executing
+Now, proving [D 1] is [True] can be accomplished by simply executing
 [D] with appropriate arguments (recall that [D] is an
 always-terminating function, whose result is a computable value). That
 Ssreflect's tactic [have]%\ssrt{have}% allows to declare the local
@@ -320,7 +320,7 @@ Qed.
 
 (**
 
-Let us provide a bit more explanation how did it happen that we
+Let us provide a bit more explanation how we
 managed to derive the falsehood in the process of the proof. The
 discrimination function [D] is a function from [nat] to [Prop], and,
 indeed, it can return [True] and [False], so it contains no
@@ -334,7 +334,7 @@ occurrence of [1] in the goal by [2], so the discrimination function
 in the assumption finished the job.
 
 %\begin{exercise}%
-Let us change the statement of a previous lemma for a little bit:
+Let us change the statement of the previous lemma a little bit:
 
 *)
 
@@ -629,7 +629,7 @@ The proof will proceed by induction on [m]. We have already seen the
 use of the [case] tactics, which just performs the case
 analysis. Another Ssreflect tactic [elim] %\ssrt{elim}% generalizes
 [case] by applying the default induction principle ([nat_ind] in this
-case) with the respect to the remaining goal (that is, the predicate
+case) with respect to the remaining goal (that is, the predicate
 [[forall p : nat, m + (n + p) = n + (m + p)]]) is to be proven by
 induction.  The following sequence of tactics proceeds by induction on
 [m] with the default induction principle. It also names some of the
@@ -828,7 +828,7 @@ Inductive leq_xor_gtn m n : bool -> bool -> Set :=
 (** 
 
 However, this is not yet enough to enjoy the custom rewriting and case
-analysis on these two variant. At this moment, the datatype family
+analysis on these two variants. At this moment, the datatype family
 [leq_xor_gtn], whose constructors' indices encode a truth table's
 "rows", specifies two substitutions in the case when [m <= n] and [n <
 m], respectively and diagrammatically looks as follows:
@@ -846,9 +846,9 @@ The boolean values in the cells specify what the values of
 the two cases. However, the table does not capture, what to substitute
 them _for_.  Therefore, our next task is to provide suitable variants
 for %\texttt{C1}% and %\texttt{C2}%, so the table would describe a
-real situation and capture exactly the "case analysis" intuition. This
+real situation and capture exactly the "case analysis" intuition. These
 values of the columns are captured by the following lemma, which,
-informally speaking, states that the table with this particular values
+informally speaking, states that the table with these particular values
 of %\texttt{C1}% and %\texttt{C2}% "makes sense".
 
 [[
@@ -881,7 +881,7 @@ Proof.
 
 Let us first "switch" from the propositional conjunction [/\] to the
 boolean one [&&] using the _view_ mechanism by using the [move]
-tactics the trailing tactical %\texttt{/}\ssrtl{/}\index{views}%. This
+tactic's trailing tactical %\texttt{/}\ssrtl{/}\index{views}%. This
 trick might look a bit unfair at the moment, but it will be soon
 explained in %Section~\ref{sec:views} of Chapter~\ref{ch:boolrefl}.%
 

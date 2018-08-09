@@ -310,7 +310,7 @@ move=>n. rewrite /prime_spec /discr_prime.
 ]]
 
 *)
-by case: (prime n)=>//.
+by case: (prime n).
 Qed.
 
 (** * The reflect type family
@@ -348,9 +348,9 @@ Abort.
 (**
 
 This is why we need a mechanism to conveniently switch between two
-possible representation. SSReflect solves this problem by employing
+possible representations. SSReflect solves this problem by employing
 the familiar rewriting machinery and introducing the inductive predicate
-family [reflect], which connects propositions an booleans:
+family [reflect], which connects propositions and booleans:
 
 *)
 
@@ -536,7 +536,7 @@ by move/eqP=>->.
 Qed.
 
 (*******************************************************************)
-(**                     * Exercices *                              *)
+(**                     * Exercises *                              *)
 (*******************************************************************)
 
 (**

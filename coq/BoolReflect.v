@@ -106,7 +106,7 @@ move=>H1 H2 H3.
 
 Since we are proficient in the proofs via implications, it is not
 difficult to construct the explicit proof term by a series of [apply:]
-tactic calls or via the [exact:] tactic, as it has been show in
+tactic calls or via the [exact:] tactic, as was shown in
 %Chapter~\ref{ch:logic}%. Let us do something different, though,
 namely _weaken_ the top assumption of the goal by means of applying
 the hypothesis [H1] to it, so the overall goal will become [Q -> S].
@@ -179,7 +179,7 @@ Qed.
 
 (** 
 
-The last proof script first moved for assumptions to the context, so
+The last proof script first moved four assumptions to the context, so
 the goal became [(P -> Q -> R) -> Q -> R]. Next, it partially applied
 the top assumption [(P -> Q -> R)] to [p : P] from the context and
 moved the result back to the goal, so it became [(Q -> R) -> Q -> R],
@@ -210,7 +210,7 @@ us to conclude the proof.
 
 So far we have explored only views that help to weaken the hypothesis
 using the view lemma, which is an implication. In fact, Ssreflect's
-view mechanism is elaborated enough to deal with view lemmas defined
+view mechanism is elaborate enough to deal with view lemmas defined
 by means of equivalence (double implication) %\texttt{<->}%, and the
 system can figure out itself, "in which direction" the view lemma
 should be applied. Let us demonstrate it with the following example,
@@ -399,7 +399,7 @@ proofs so far. Again, even if the functions are unknown upfront, it
 does not seem possible to implement an always-terminating procedure
 that would automatically decide whether they are equal or not.
 
-The above said does not mean that all possible propositions should be implemented as instances of [Prop], making their clients to always construct their proofs, when it is necessary, since, fortunately, some propositions are _decidable_, so it is possible to construct a decision procedure for them. A good example of such proposition is a predicate, which ensures that a number [n] is prime. Of course, in Coq one can easily encode primality of a natural number by means of the following inductive predicate, which ensures that [n] is prime if it is [1] or has no other natural divisors but [1] and [n] itself.
+The above does not mean that all possible propositions should be implemented as instances of [Prop], making their clients to always construct their proofs, when it is necessary, since, fortunately, some propositions are _decidable_, so it is possible to construct a decision procedure for them. A good example of such proposition is a predicate, which ensures that a number [n] is prime. Of course, in Coq one can easily encode primality of a natural number by means of the following inductive predicate, which ensures that [n] is prime if it is [1] or has no other natural divisors but [1] and [n] itself.
 
 %\ssrd{isPrime}%
 
@@ -664,10 +664,10 @@ Abort.
 (**
 
 This is why we need a mechanism to conveniently switch between two
-possible representation. Ssreflect solves this problem by employing
+possible representations. Ssreflect solves this problem by employing
 the familiar rewriting machinery (%see Section~\ref{sec:indexed} of
 Chapter~\ref{ch:eqrew}%) and introducing the inductive predicate
-family [reflect], which connects propositions an booleans:
+family [reflect], which connects propositions and booleans:
 
 %\ssrd{reflect}%
 %\index{reflect datatype@{\textsf{reflect} datatype}}%
@@ -893,7 +893,7 @@ Definition XOR' (P Q: Prop) := (P /\ ~Q) \/ (~P /\ Q).
 (** 
 %\noindent%
 
-Prove the following equivalence lemma between to versions of [XOR]:
+Prove the following equivalence lemma between two versions of [XOR]:
 
 *)
 
@@ -1061,7 +1061,7 @@ Qed.
 %\begin{exercise}%
 
 Sometimes, the statement ``there exists unique $x$ and $y$, such that
-$P(x, y)$ holds'' is mistakingly formalized as $\exists ! x~\exists !
+$P(x, y)$ holds'' is mistakenly formalized as $\exists ! x~\exists !
 y~P(x, y)$. In fact, the latter assertion is much weaker than the
 previous one. The goal of this exercise is to demonstrate this
 formally.%\footnote{I am grateful to Vladimir Reshetnikov

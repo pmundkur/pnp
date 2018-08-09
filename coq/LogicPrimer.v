@@ -205,8 +205,8 @@ command [Definition], it defines a named entity, which is not
 necessarily a proposition. In this case the name is
 [true_is_true]. Next, similarly to [Definition], there might follow a
 list of parameters, which is empty in this example. Finally, after the
-colon [:] there is a type of the defined value, which in this case it
-[True]. With this respect there is no difference between [Theorem] and
+colon [:] there is a type of the defined value, which in this case is
+[True]. In this respect there is no difference between [Theorem] and
 [Definition]. However, unlike [Definition], [Theorem] doesn't require
 one to provide the expression of the corresponding type right
 away. Instead, the _interactive proof mode_ %\index{interactive proof mode}%  
@@ -304,7 +304,7 @@ is more appropriate.
 
 There is one more important difference between values defined as
 [Definition]s %\ccom{Definition}\ccom{Theorem}% and [Theorem]s. While
-both define what in fact is a proof terms for the declared type, the
+both define what in fact is a proof term for the declared type, the
 value bound by [Definition] is _transparent_: it can be executed by
 means of unfolding and subsequent evaluation of its body. In contrast,
 a proof term bound by means of [Theorem] is _opaque_, which means that
@@ -318,7 +318,7 @@ long as they both are valid.%\footnote{Although, in fact, proof terms
 in Coq can be very well distinguished.}% Conversely, the programs
 (that is, what is created using the [Definition] command) are
 typically of interest by themselves, not only because of the type they
-return.
+inhabit.
 
 The difference between the two definitions of the truth's validity,
 which we have just constructed, can be demonstrated by means of the
@@ -336,7 +336,7 @@ Eval compute in true_is_true'.
 [ = I : True]
 
 As we can see now, the theorem is evaluated to itself, whereas the
-definition evaluates to it body, i.e., the value of the constructor
+definition evaluates to its body, i.e., the value of the constructor
 [I].  
 
 *)
@@ -546,7 +546,7 @@ type [P -> Q] and a proof term of type [Q -> R] one can receive a
 proof term of type [P -> R].%\footnote{Recall that the arrows have
 right associativity, just like function types in Haskell and OCaml,
 which allows one to apply functions partially, specifying their
-arguments one by one}% Let us now prove these statement in the form of
+arguments one by one}% Let us now prove this statement in the form of
 a theorem.  *)
 
 Theorem imp_trans: forall P Q R: Prop, (P -> Q) -> (Q -> R) -> P -> R.
@@ -566,7 +566,7 @@ preparatory step for the future reasoning.
 %\index{tacticals}%
 %\index{bookkeeping}%
 %\index{tacticals|seealso {Coq/Ssreflect tacticals}}%
-Ssreflect offers a tactic and small but powerful toolkit of
+Ssreflect offers a tactic and a small but powerful toolkit of
 _tacticals_ (i.e., higher-order tactics) for bookkeeping. In
 particular, for moving the bound variables from "bottom to the top",
 one should use a combination of the "no-op" tactic [move]%\ssrt{move}%
@@ -775,7 +775,7 @@ parameters of the theorem, rather than [forall]-quantified
 values. This relieved us from the necessity to lift them using
 [move=>] in the beginning of the proof.
 
-In is natural to expect that the original [imp_trans] will be of some
+It is natural to expect that the original [imp_trans] will be of some
 use. We are now in the position to apply it directly, as the current
 goal matches its conclusion. However, let us do something slightly
 different: _move_ the statement of [imp_trans] into the goal,
@@ -1145,7 +1145,7 @@ of type [(A -> B) -> B], where [B] is taken to be [False].
 
 However, reasoning out of negation helps to derive the familiar proofs
 by contradiction, given that we managed to construct [P] _and_ [~P],
-as demonstrated by the following theorem, which states that from any
+as demonstrated by the following theorem, which states that any
 [Q] can be derived from [P] and [~P]. 
 
 *)
@@ -1358,7 +1358,7 @@ Qed.
 Sometimes, the universal and the existential quantifications are
 paraphrased as "infinitary" conjunction and disjunction
 correspondingly. This analogy comes in handy when understanding the
-properties of both quantifications, so let us elabore on it for a bit.
+properties of both quantifications, so let us elaborate on it for a bit.
 
 In order to prove the conjunction [P1 /\ ... /\ Pn], one needs to
 establish that _all_ propositions [P1 ... Pn] hold, which in the
@@ -1368,7 +1368,7 @@ do). Similarly, in order to prove the propositions [forall x: A, P x],
 one needs to prove that [P x] holds for _any_ [x] of type [A]. Since
 the type [A] itself can define an infinite set, there is no way to
 enumerate all conjuncts, however, an explicit handle [x] gives a way
-to effective _index_ them, so proving [P x] for an arbitrary [x] would
+to effectively _index_ them, so proving [P x] for an arbitrary [x] would
 establish the validity of the universal quantification itself. Another
 useful insight is that in Coq [forall x: A, P x] is a type of a
 dependent function that maps [x] of type [A] to a value of type [P
@@ -1424,7 +1424,7 @@ by means of importing the appropriate libraries. %Chapter~12 of the
 book~\cite{Chlipala:BOOK}% contains a detailed survey of useful axioms
 that can be added into Coq development on top of CIC.
 
-To explore some of some of the axioms, we first import that classical
+To explore some of the axioms, we first import that classical
 logic module [Classical_Prop].
 
 *)
@@ -1635,10 +1635,10 @@ expressive reasoning in the higher-order propositional logic.
 _Impredicativity_ as a property of definitions allows one to define
 domains that are _self-recursive_---a feature of [Prop] that we
 recently observed. Unfortunately, when restated in the classical set
-theory, impredicativity immediately leads to the famous Russel's
+theory, impredicativity immediately leads to the famous Russell's
 paradox, which arises from the attempt to define a set of all sets
 that do not belong to themselves. In the terms of programming, the
-Russel's paradox provides a recipe to encode a fixpoint combinator in
+Russell's paradox provides a recipe to encode a fixpoint combinator in
 the calculus itself and write generally-recursive programs.
 
 %System~$F$% is not a dependently-typed calculus and it has been
@@ -1648,7 +1648,7 @@ values. However, adding dependent types to the mix (which Coq requires
 to make propositions quantify over arbitrary values, not just other
 propositions, serving as a general-purpose logic) makes the design of
 a calculus more complicated, in order to avoid paradoxes akin to the
-Russels', which arise from mixing values and sets of values. This
+Russell's, which arise from mixing values and sets of values. This
 necessity to "cut the knot" inevitably requires to have a sort of a
 higher level, which contains all sets and propositions (i.e., the
 whole sorts [Set] and [Prop]), but does not contain itself. Let us
@@ -1760,7 +1760,7 @@ R tt
 
 The part in comments show the inequality, generated by the Coq
 unification algorithm that had to be solved in order to determine the
-universe level of the value [R tt] with [Top.93] being the level,
+universe level of the value [R tt] with [Top.93] being the level
 assigned to [R] itself.
 
 *)
@@ -1797,7 +1797,7 @@ satisfiable.
 
 However, the attempt to apply [R] to _itself_ immediately leads to an
 error reported, as the system cannot infer the level of the result, by
-means of solving a system of universe level inequations, therefore,
+means of solving a system of universe level inequations, therefore
 preventing meta-circular paradoxes.
 
 *)
@@ -1818,9 +1818,9 @@ the [R]-"function" belongs to the universe with a higher level number
 than [R]-"argument". Checking this scenario requires supporting a more
 flexible form of universe polymorphism, which can assign different
 universe levels to different occurrences of the same definition in a
-common expression, and in this sence reminds _let-polymorphism_
+common expression, and in this sense is similar to _let-polymorphism_
 %~\cite[\S 22.7]{Pierce:BOOK02}\index{let-polymorphism}%.  This
-feature was introduced in Coq ince version
+feature was introduced in Coq in version
 8.5%~\cite{Sozeau-Tabareau:ITP14}%, and it allows us to redefine [R]
 as universe-polymorphic via the new [Polymorphic] %\ccom{Polymorphic}%
 keyword.%\footnote{More documentation on universe polymorphism is

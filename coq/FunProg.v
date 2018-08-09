@@ -503,8 +503,8 @@ function, which is a third parameter, of this [nat_rec] call, makes
 use of the _dependent_ pattern matching, which now explicitly
 _refines_ the return type [P n' -> _] of the whole [match e with ps
 end] expression. This small addition allows the Coq type checker to
-relate the expected type of [my_plus]' first argument in the second
-branch to the the type of the pattern matching scrutinee [n']. Without
+relate the expected type of [my_plus] first argument in the second
+branch to the type of the pattern matching scrutinee [n']. Without
 the explicit [return] in the pattern matching, in some cases when its
 result type depends on the value of the scrutinee, the Coq type
 checking engine will fail to unify the type of the branch and the
@@ -558,8 +558,8 @@ speaking, Coq abuses the $\forall$-notation using it for what is
 denoted in other type calculi by means of quantifiers $\Lambda$ (terms
 parametrized by types), $\forall$ (types parametrized by types) and
 $\Pi$ (types parametrized by terms)~\cite{Pierce:BOOK02}.}% The
-crucial difference beween Coq's core calculus and System $F$ is that
-in Coq the types can be parametrised not just by _types_ but also by
+crucial difference between Coq's core calculus and System $F$ is that
+in Coq the types can be parameterised not just by _types_ but also by
 _values_. While the utility of this language "feature" can be already
 demonstrated for constructing and type-checking _programs_ (for
 example, [sum_no_zero]), its true strength is best demonstrated when
@@ -621,8 +621,8 @@ Inductive strange : Set :=  cs : strange -> strange.
 (** 
 
 Therefore, an attempt to create a value of type [strange] by invoking
-its single constructor will inevitably lead to an infinie,
-non-terminating, series of constructor calls, and such programs cannon
+its single constructor will inevitably lead to an infinite,
+non-terminating, series of constructor calls, and such programs cannot
 be encoded in Coq. It is interesting to take a look at the recursion
 principle of [strange]:
 
@@ -668,7 +668,7 @@ programming, as they appear in Coq.
 
 
 The type of pairs is parametrized by two arbitrary types [A] and
-[B] (by now let us think of its sort [Type] as of a generalization of
+[B] (by now let us think of its sort [Type] as of
 a generalization of [Set], which we have seen before). As in Haskell
 or OCaml, [prod] can also be seen as a type-level constructor with two
 parameters that can be possibly curried:
@@ -759,7 +759,7 @@ fst : forall A B : Type, A * B -> B
 Curiously, the notation "[_ * _]" is not hard-coded into Coq, but
 rather is defined as a lightweight syntactic sugar on top of standard
 Coq syntax. Very soon we will see how one can easily extend Coq's
-syntax by defining their own notations. We will also see how is it
+syntax by defining one's own notations. We will also see how it is
 possible to find what a particular notation means.
 
 The arsenal of a functional programmer in Coq would be incomplete
@@ -950,7 +950,7 @@ We can see now that the plus-notation is used in particular for the
 addition of natural numbers (in [nat_scope]) and the declaration of a
 sum type (in [type_scope]). Similarly to the notations, the
 %\texttt{Locate}% command can help finding the definition in the
-source modules they defined:%\footnote{The module system of Coq is
+source modules they were defined in:%\footnote{The module system of Coq is
 similar to OCaml and will be discussed further in this chapter.}% *)
 
 Locate map.

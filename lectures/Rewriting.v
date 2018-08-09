@@ -270,7 +270,7 @@ makes sure that the assumption is an equality and rewrites by it.
  *)
 
 Restart.
-by move=>->.
+by move =>->; rewrite /double.
 Qed.
 
 (** 
@@ -433,7 +433,6 @@ The second goal can be proved by a series of rewritings using the fact
 about the [(_ + 1)] function:
 
 *)
-
 
 by rewrite !addSnnS -addnS.
 

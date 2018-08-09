@@ -255,8 +255,8 @@ Qed.
 (**
 
 In the future, we will replace the use of trivial tactics, such as
-[exact:] by SSReflect's much more powerful tactics [done], which
-combines a number of standard Coq's tactics in an attempt to finish
+[exact:] by SSReflect's much more powerful tactic [done], which
+combines a number of standard Coq tactics in an attempt to finish
 the proof of the current goal and reports an error if it fails to do
 so.  *)
 
@@ -811,7 +811,7 @@ Error: Universe inconsistency (cannot enforce Top.1225 < Top.1225).
 
 
 (*******************************************************************)
-(**                     * Exercices *                              *)
+(**                     * Exercises *                              *)
 (*******************************************************************)
 
 (**
